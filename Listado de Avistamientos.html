@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Listado</title>
+  <script src="redirect.js"></script>
+  <link rel="title icon" href="titleicon.png"/>
+
+  <style>
+
+    body {
+      background-color: rgb(238, 226, 208);
+      font-family: "Helvetica";
+      color: rgb(115, 54, 54);
+    }
+
+    .listado-avistamientos {
+      margin-top: 5%;
+    }
+
+    .topBar {
+
+      margin-left: 0%;
+      overflow: hidden;
+      background-color: rgb(91, 124, 91);
+
+    }
+
+    .topBar img {
+      display: inline-block;
+      object-fit: scale-down;
+
+    }
+
+    .topBar a {
+      text-align: center;
+      padding: 40px;
+      font-size: 24px;
+      color: rgb(238, 226, 208);
+      text-decoration: none;
+    }
+
+    .topBar a:hover {
+      background-color: rgb(115, 54, 54);
+      color: rgb(238, 226, 208);
+    }
+
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+      text-align: left;
+      padding: 10px;
+
+    }
+
+    .table {
+      width: 70%;
+      margin-left: auto;
+      margin-right: auto;
+      color: black;
+
+    }
+
+    .table-title {
+      margin-left: 40%;
+
+
+    }
+
+  </style>
+
+</head>
+<body>
+
+<header>
+  <div class="topBar">
+    <nav>
+      <a href="portada.html"><img alt="icono pagina abeja" src="pageicon1.png"></a>
+      <a href="avistamientos.html">Informar un avistamiento</a>
+      <a href="Grafico.html">Ver Gráficos</a>
+    </nav>
+
+  </div>
+</header>
+
+
+<div class="listado-avistamientos">
+  <h2 class="table-title">Listado de avistamientos</h2>
+  <table class="table">
+    <thead >
+    <tr>
+      <th>Fecha-Hora</th>
+      <th>Comuna</th>
+      <th>Sector</th>
+      <th>Nombre contacto</th>
+      <th>Total avistamientos</th>
+      <th>Total Fotos</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr  onclick="redirect()">
+      <td>2021-04-20<br>13:21</td>
+      <td>Providencia</td>
+      <td>Galería 2 caracoles</td>
+      <td>Uzi</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr  onclick="redirect()">
+      <td>2021-04-20 <br> 13:21</td>
+      <td>Santiago</td>
+      <td>Barrio república</td>
+      <td>Petra</td>
+      <td>6</td>
+      <td>10</td>
+    </tr>
+    <tr  onclick="redirect()">
+      <td>2021-04-20 <br> 13:21</td>
+      <td>Providencia</td>
+      <td>Portal Lyon</td>
+      <td>Nobara kugisaki</td>
+      <td>2</td>
+      <td>4</td>
+    </tr>
+    <tr  onclick="redirect()">
+      <td>2021-04-20 <br> 13:21</td>
+      <td>Santiago</td>
+      <td>Beauchef</td>
+      <td>Gojo</td>
+      <td>7</td>
+      <td>7</td>
+    </tr>
+    <tr onclick="redirect()">
+      <td>2021-04-20 <br> 13:21</td>
+      <td>Estacion central</td>
+      <td>Andén del metro Estación central</td>
+      <td>tomii 11</td>
+      <td>9</td>
+      <td>11</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+
+</body>
+</html>

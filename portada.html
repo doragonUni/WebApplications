@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Portada</title>
+
+  <link rel="title icon" href="titleicon.png"/>
+
+  <style>
+    .title {
+      margin-left: 20%;
+      margin-top: 5%;
+    }
+
+    body {
+      background-color: rgb(238, 226, 208);
+      font-family: "Helvetica";
+      color: rgb(115, 54, 54);
+    }
+
+    header{
+      margin-top: 0;
+    }
+
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+      text-align: left;
+      padding: 8px;
+      margin-bottom: 10%;
+    }
+
+    td img {
+      display: block;
+      object-fit: scale-down;
+    }
+
+    .table {
+      width: 60%;
+      margin-left: auto;
+      margin-right: auto;
+      color: black;
+
+    }
+
+    .table-title {
+      margin-left: 20%;
+    }
+
+    .ultimos-avistamientos {
+      margin-top: 5%;
+    }
+
+    .topBar {
+      margin-top: 0;
+      margin-left: 0;
+      overflow: hidden;
+      background-color: rgb(91, 124, 91);
+
+    }
+
+    .topBar img {
+      display: inline-block;
+      object-fit: scale-down;
+
+    }
+
+    .topBar nav{
+      margin-left: 40px;
+    }
+
+    .topBar a {
+      text-align: center;
+      padding: 40px;
+      font-size: 24px;
+      color: rgb(238, 226, 208);
+      text-decoration: none;
+    }
+
+    .topBar a:hover {
+      background-color: rgb(115, 54, 54);
+      color: rgb(238, 226, 208);
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+<header>
+  <div class="topBar">
+    <nav>
+      <img alt="abeja para la pagina" src="pageicon1.png">
+      <a href="avistamientos.html">Informar un avistamiento</a>
+      <a href="Listado%20de%20Avistamientos.html">Ver Listado</a>
+      <a href="Grafico.html">Ver Gráficos</a>
+    </nav>
+
+  </div>
+</header>
+
+
+<div class="title"><h1>Sistema de reportes de insectos!</h1></div>
+
+
+<div class="ultimos-avistamientos">
+  <h2 class="table-title">últimos avistamientos</h2>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Fecha-Hora</th>
+      <th>Comuna</th>
+      <th>Sector</th>
+      <th>Tipo</th>
+      <th>Foto</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>2021-04-20 <br> 13:21</td>
+      <td>Providencia</td>
+      <td>Galería 2 caracoles</td>
+      <td>Insecto</td>
+      <td><img alt="hormiga referencia"  src="hormiga.jpg" width="100" height="100"></td>
+    </tr>
+    <tr>
+      <td>2021-03-31 <br> 13:21</td>
+      <td>Santiago</td>
+      <td>Barrio república</td>
+      <td>No sé</td>
+      <td><img alt="sayu foto" src="sayu.png" width="100" height="100" ></td>
+    </tr>
+    <tr>
+      <td>2021-04-02  <br> 13:21</td>
+      <td>Providencia</td>
+      <td>Portal Lyon</td>
+      <td>Arácnido</td>
+      <td><img alt="bee" src="pageIcon.png" width="100" height="100" ></td>
+    </tr>
+    <tr>
+      <td>2021-01-12  <br> 13:21</td>
+      <td>Santiago</td>
+      <td>Beauchef</td>
+      <td>No sé</td>
+      <td><img alt="skarner" src="skar.jpg" width="100" height="100" ></td>
+    </tr>
+    <tr>
+      <td>2021-03-01 <br>03:21</td>
+      <td>Estacion central</td>
+      <td>Andén del metro Estación central</td>
+      <td>Arácnido</td>
+      <td><img alt="ray" src="rayquaza.png" width="100" height="100" ></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+
+</body>
+</html>

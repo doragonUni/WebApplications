@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>info1</title>
+  <script src="resize.js"></script>
+  <style>
+
+    body {
+      background-color: rgb(238, 226, 208);
+      font-family: "Helvetica";
+      color: rgb(115, 54, 54);
+    }
+
+    .topBar {
+
+      margin-left: 0;
+      overflow: hidden;
+      background-color: rgb(91, 124, 91);
+
+    }
+
+    .topBar img {
+      display: inline-block;
+      object-fit: scale-down;
+
+    }
+
+    .topBar a {
+      text-align: center;
+      padding: 40px;
+      font-size: 24px;
+      color: rgb(238, 226, 208);
+      text-decoration: none;
+    }
+
+    .topBar a:hover {
+      background-color: rgb(115, 54, 54);
+      color: rgb(238, 226, 208);
+    }
+
+    .complete-info{
+      margin-top: 4%;
+      margin-left: 33%;
+    }
+  </style>
+
+</head>
+<body>
+
+<header>
+  <div class="topBar">
+    <nav>
+      <a href="portada.html"><img alt="abeja para la pagina" src="pageicon1.png"></a>
+      <a href="avistamientos.html">Informar un avistamiento</a>
+      <a href="Listado%20de%20Avistamientos.html">Ver Listado</a>
+      <a href="Grafico.html">Ver Gráficos</a>
+    </nav>
+
+  </div>
+</header>
+<div class="complete-info">
+  <label>UZI</label>
+<label>Total Avistamientos: 1</label>
+  <br>
+<label>Total Fotos: 1 </label>
+   <br>
+<label>Region: Metropolitana </label>
+   <br>
+<label>Comuna: providencia</label>
+   <br>
+<label>Sector: 2 caracoles </label>
+   <br>
+<label>fecha hora: 2021-04-02 20:40</label>
+   <br>
+<label>tipo: no sé </label>
+   <br>
+<label>estado: muerto </label>
+   <br>
+<label><img alt="hormiga" id="photoTest" src="hormiga.jpg" width="320" height="240" onclick="resize()"></label>
+  <button id="resize" onclick="resize()">Agrandar</button>
+</div>
+
+</body>
+</html>
