@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Avistamiento</title>
+
+  <link rel="title icon" href="titleicon.png"/>
+
+  <style>
+
+    .title {
+      text-align: center;
+    }
+
+    body {
+      background-color: rgb(238, 226, 208);
+      font-family: "Helvetica";
+      color: rgb(115, 54, 54);
+    }
+
+    .formulario {
+      color: rgb(238, 226, 208);
+      background-color: rgb(91, 124, 91);
+      width: 60%;
+      padding: 20px;
+      margin-left: 20%;
+      border-radius: 10px;
+      margin-bottom: 5%;
+
+
+    }
+
+    .text {
+      padding: 3px;
+    }
+
+
+    .place, .contact, .information, .infoContainer {
+      padding: 5px;
+      width: 20%;
+      margin-left: 40px;
+    }
+
+
+    .topBar {
+
+      margin-left: 0;
+      overflow: hidden;
+      background-color: rgb(91, 124, 91);
+
+    }
+
+    .topBar img {
+      display: inline-block;
+      object-fit: scale-down;
+
+    }
+
+    .topBar a {
+      text-align: center;
+      padding: 40px;
+      font-size: 24px;
+      color: rgb(238, 226, 208);
+      text-decoration: none;
+    }
+
+    .topBar a:hover {
+      background-color: rgb(115, 54, 54);
+      color: rgb(238, 226, 208);
+    }
+
+    #enviar {
+    background-color: #b3d1f3;
+    padding: 10px;
+    border-radius: 10px;
+    border: 0;
+    outline: 0;
+    font-size: 20px;
+    font-weight: 500;
+    }
+
+    #enviar:hover {
+    color: aliceblue;
+    box-shadow: #adadad30 0 0 9px 2px;
+    cursor: pointer;
+    }
+
+
+    #informationButton{
+
+      background-color: rgb(115, 54, 54);
+      padding: 10px;
+      border-radius: 10px;
+      border: 0;
+      outline: 0;
+      font-size: 20px;
+      font-weight: 500;
+    }
+
+    #informationButton:hover {
+    color: aliceblue;
+    box-shadow: #adadad30 0 0 9px 2px;
+    cursor: pointer;
+    }
+
+    .button {
+    margin-top: 5%;
+    }
+
+
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="topBar">
+    <nav>
+      <a href="cgi-bin/portada.py"><img alt="icono pagina abeja" src="pageicon1.png"></a>
+      <a href="cgi-bin/listaAvistamientos.py?page=0">Ver Listado</a>
+      <a href="Grafico.html">Ver Gráficos</a>
+    </nav>
+
+  </div>
+</header>
+
+<h1 class="title">Avistamiento de insectos</h1>
+<div class="formulario">
+  <form method="post" action="cgi-bin/formValidatorCheck.py"  enctype="multipart/form-data" onsubmit="return formValidator()">
+    <div class="place">
+      <div class="text"><h2>Lugar</h2></div>
+
+      <div class="field">
+        <div class="text">Región</div>
+        <select name="region" id="region" onchange="cargarComunas()">
+          <option value="" disabled selected hidden>Seleccione región</option>
+          <option value="15">Arica y Parinacota</option>
+          <option value="1">Tarapacá</option>
+          <option value="2">Antofagasta</option>
+          <option value="3">Atacama</option>
+          <option value="4">Coquimbo</option>
+          <option value="5">Valparaíso </option>
+          <option value="13">RM</option>
+          <option value="6">Libertador Gral. Bernardo O’Higgins</option>
+          <option value="7">Maule</option>
+          <option value="16">Ñuble</option>
+          <option value="8">Biobío</option>
+          <option value="9"> Araucanía</option>
+          <option value="14">Los Ríos</option>
+          <option value="10">Los Lagos </option>
+          <option value="11"> Aisén del Gral. Carlos Ibáñez del Campo </option>
+          <option value="10">Los Lagos </option>
+          <option value="12">Magallanes y de la Antártica Chilena</option>
+
+        </select>
+      </div>
+      <div class="field">
+        <div class="text" onchange="cargarComunas()">Comuna</div>
+        <select name="comuna" id="comuna">
+          <option value="" disabled selected hidden>Seleccione comuna</option>
+
+        </select>
+      </div>
+
+      <div class="field">
+        <div class="text">Sector</div>
+        <textarea name="sector" ></textarea>
+      </div>
+    </div>
+
+    <div class="contact">
+
+      <div class="text"><h2>Datos de contacto</h2></div>
+      <div class="field">
+        <div class="text">Nombre</div>
+        <input type="text" name="nombre" placeholder="ej: Jorge">
+      </div>
+      <div class="field">
+        <div class="text">email</div>
+        <input type="text" name="email" placeholder="ej: hola@gmail.com">
+      </div>
+
+      <div class="field">
+        <div class="text">Celular</div>
+        <input type="text" name="celular" size="15" placeholder="ej: 912345678">
+      </div>
+    </div>
+
+    <div class="information">
+      <div class="text"><h2>Información de avistamiento</h2></div>
+      <div class="field">
+        <div class="text">Día hora</div>
+
+        <input type="text" name="dia-hora-avistamiento" placeholder="yyyy-mm-dd hh:mm" size="20">
+      </div>
+      <div class="field">
+        <div class="text">Tipo</div>
+        <select name="tipo-avistamiento">
+          <option value="" disabled selected hidden>Seleccione tipo de insecto</option>
+          <option value="Insecto">Insecto</option>
+          <option value="Arácnido">Arácnido</option>
+          <option value="Miriápodo">Miriápodo</option>
+          <option value="No sé">No sé</option>
+        </select>
+      </div>
+      <div class="field">
+        <div class="text">Estado</div>
+        <select name="estado-avistamiento">
+          <option value="" disabled selected hidden>Seleccione el estado</option>
+          <option value="Vivo">Vivo</option>
+          <option value="Muerto">Muerto</option>
+          <option value="No sé">No sé</option>
+        </select>
+      </div>
+      <div class="field">
+        <div class="photo">
+          <div class="text">Foto</div>
+        </div>
+      </div>
+
+      <div class="field" id="imageContainer1">
+      <input type="file" accept="image/*" name="foto-avistamiento10">
+      </div>
+      <br>
+      <button type="button" onclick="insertImage(1)">Agregar otra foto</button >
+      <br>
+
+
+
+    </div>
+
+
+    <div class="infoContainer" id="informationContainer">
+
+    </div>
+
+    <div class="button">
+      <button type="button" onclick="insertInformation()" id="informationButton">Añadir avistamiento</button>
+    <button id="enviar" type="submit">Enviar información de avistamiento</button>
+    </div>
+
+  </form>
+
+
+
+
+</div>
+
+<script src="validator.js"></script>
+</body>
+</html>
