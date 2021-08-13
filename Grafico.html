@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Graficos</title>
+
+
+
+  <style>
+
+
+    body {
+      background-color: rgb(238, 226, 208);
+      font-family: "Helvetica";
+      color: rgb(115, 54, 54);
+    }
+
+
+    .topBar {
+
+      margin-left: 0%;
+      overflow: hidden;
+      background-color: rgb(91, 124, 91);
+
+    }
+
+    .topBar img {
+      display: inline-block;
+      object-fit: scale-down;
+
+    }
+
+    .topBar a {
+      text-align: center;
+      padding: 40px;
+      font-size: 24px;
+      color: rgb(238, 226, 208);
+      text-decoration: none;
+    }
+
+    .topBar a:hover {
+      background-color: rgb(115, 54, 54);
+      color: rgb(238, 226, 208);
+    }
+  </style>
+</head>
+
+
+<body>
+<script src="jquery-3.6.0.js"></script>
+
+<header>
+  <div class="topBar">
+    <nav>
+      <a href="cgi-bin/portada.py"><img alt="icono pagina abeja" src="pageicon1.png"></a>
+      <a href="avistamientos.html">Informar un avistamiento</a>
+      <a href="cgi-bin/listaAvistamientos.py?page=0">Ver Listado</a>
+
+    </nav>
+
+  </div>
+</header>
+
+<h1>Aqui van los gráficos</h1>
+<!--img alt="graficos inventados" src="gráficos.png"-->
+
+<!-- GRAPHS -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<div style="margin-left:20%; position: relative; height:300px; width:400px">
+  <canvas id="pieChart"></canvas>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<script>
+
+    let xhrPie  = new XMLHttpRequest();
+    xhrPie.open('POST', 'cgi-bin/pieChart.py');
+    xhrPie.send()
+    xhrPie.timeout = 5000;
+    xhrPie.onload = function(data){
+        let quantity = JSON.parse(data.currentTarget.responseText) // JSON de las fechas de ingreso
+        console.log(quantity);
+        let spider_count = Object.values(quantity)[0];
+        let mirapod_count = Object.values(quantity)[1];
+        let insect_count = Object.values(quantity)[2];
+        let idk_count = Object.values(quantity)[3];
+
+        let spider = Object.keys(quantity)[0];
+        let mirapod = Object.keys(quantity)[1];
+        let insect = Object.keys(quantity)[2];
+        let idk = Object.keys(quantity)[3];
+
+        const labels = [
+          spider,
+          mirapod,
+          insect,
+          idk,
+        ];
+        const config = {
+          type: 'pie',
+          data: {
+          labels: labels,
+          datasets: [{
+            label: 'My First dataset',
+            backgroundColor:  ['rgb(255, 99, 132)', 'rgb(20, 99, 132)',
+              'rgb(190, 255, 100)', 'rgb(100, 244, 234)'],
+            borderColor: 'rgb(255, 255, 255)',
+            data:[spider_count,mirapod_count, insect_count, idk_count],}]
+            },
+          options: {}
+        };
+        let pieChart = new Chart(
+        document.getElementById('pieChart'),
+        config
+        );
+        // === include 'setup' then 'config' above ===
+    };
+    xhrPie.onerror = function(){
+        showError('Fatal error');
+    }
+</script>
+
+<div style="margin-left:20%;   position: relative; height:300px; width:400px">
+  <canvas id="barChart"></canvas>
+</div>
+
+
+<script>
+
+  function sortOnKeys(dict) {
+
+    var sorted = [];
+    for(var key in dict) {
+        sorted[sorted.length] = key;
+    }
+    sorted.sort();
+
+    var tempDict = {};
+    for(var i = 0; i < sorted.length; i++) {
+        tempDict[sorted[i]] = dict[sorted[i]];
+    }
+
+    return tempDict;
+}
+    let xhrBar  = new XMLHttpRequest();
+    xhrBar.open('POST', 'cgi-bin/barsChart.py');
+    xhrBar.send()
+    xhrBar.timeout = 5000;
+    xhrBar.onload = function(data){
+        let dates = JSON.parse(data.currentTarget.responseText) // JSON de las fechas de ingreso
+        console.log(dates);
+        let dead = Object.values(dates)[0];
+        let alive = Object.values(dates)[1];
+        let idk = Object.values(dates)[2];
+
+
+
+
+        let dead_count_month = Object.values(dead)
+        let alive_count_month = Object.values(alive)
+        let idk_count_month = Object.values(idk)
+        console.log(dead)
+
+        //console.log(alive_count_month, dead_count_month, idk_count_month)
+
+        const labels = [
+          "enero",
+          "febrero",
+          "marzo",
+          "abril",
+          "mayo",
+          "junio",
+          "julio",
+          "agosto",
+          "septiembre",
+          "octumbre",
+          "noviembre",
+          "diciembre",
+        ];
+        const config = {
+          type: 'bar',
+          data: {
+          labels: labels,
+          datasets: [{
+            "label": 'Vivos',
+            "backgroundColor":  'rgb(255, 255, 132)',
+            "borderColor": 'rgb(255, 255, 255)',
+            "data": [alive_count_month[3],alive_count_month[4],alive_count_month[5],alive_count_month[6],
+            alive_count_month[7],alive_count_month[8],alive_count_month[9],alive_count_month[10], alive_count_month[11], alive_count_month[0],
+            alive_count_month[1],alive_count_month[2]]},
+            {
+            label: 'Muertos',
+            backgroundColor:  'rgb(20, 99, 132)',
+            borderColor: 'rgb(255, 255, 255)',
+            data: [dead_count_month[3],dead_count_month[4],dead_count_month[5],dead_count_month[6],
+            dead_count_month[7],dead_count_month[8],dead_count_month[9],dead_count_month[10], dead_count_month[11], dead_count_month[0],
+            dead_count_month[1],dead_count_month[2]],},
+            {
+            label: 'No sé',
+            backgroundColor: 'rgb(190, 255, 100)',
+            borderColor: 'rgb(255, 255, 255)',
+            data: [idk_count_month[3],idk_count_month[4],idk_count_month[5],idk_count_month[6],
+            idk_count_month[7],idk_count_month[8],idk_count_month[9],idk_count_month[10], idk_count_month[11], idk_count_month[0],
+            idk_count_month[1],idk_count_month[2]],}
+          ]
+            },
+          options: {}
+        };
+        let barChart = new Chart(
+        document.getElementById('barChart'),
+        config
+        );
+        // === include 'setup' then 'config' above ===
+    };
+    xhrBar.onerror = function(){
+        showError('Fatal error');
+    }
+</script>
+
+<div style="margin-left:20%; position: relative; height:300px; width:400px">
+  <canvas id="lineChart"></canvas>
+</div>
+
+<script>
+
+    let xhrLine  = new XMLHttpRequest();
+    xhrLine.open('POST', 'cgi-bin/lineChart.py');
+    xhrLine.send()
+    xhrLine.timeout = 5000;
+    xhrLine.onload = function(data){
+        let week = JSON.parse(data.currentTarget.responseText) // JSON de las fechas de ingreso
+        console.log(week);
+
+        let lunes = Object.values(week)[0];
+        let martes = Object.values(week)[1];
+        let miercoles = Object.values(week)[2];
+        let jueves = Object.values(week)[3];
+        let viernes = Object.values(week)[4];
+        let sabado = Object.values(week)[5];
+        let domingo = Object.values(week)[6];
+
+        const labels = [
+          "lunes",
+          "martes",
+          "miercoles",
+          "jueves",
+          "viernes",
+          "sabado",
+          "domingo",
+        ];
+        const config = {
+          type: 'line',
+          data: {
+          labels: labels,
+          datasets: [{
+            label: 'dias de la semana',
+            backgroundColor:  ['rgb(255, 99, 132)', 'rgb(20, 99, 132)',
+              'rgb(190, 255, 100)', 'rgb(100, 244, 234)'],
+            borderColor: 'rgb(0, 0, 0)',
+            data:[lunes, martes, miercoles, jueves, viernes, sabado, domingo],}]
+            },
+          options: {}
+        };
+        let barChart = new Chart(
+        document.getElementById('lineChart'),
+        config
+        );
+        // === include 'setup' then 'config' above ===
+    };
+    xhrLine.onerror = function(){
+        showError('Fatal error');
+    }
+</script>
+
+
+
+
+</body>
+</html>
